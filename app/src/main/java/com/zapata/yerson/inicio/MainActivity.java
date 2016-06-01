@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences dato;
@@ -27,7 +29,12 @@ public class MainActivity extends AppCompatActivity {
         tDato = (TextView) findViewById(R.id.tNombre);
 
         String val_Nombre= String.valueOf(dato.getString("var_nombre","no habia nada"));
-        tDato.setText("Bienvenido "+val_Nombre+"Su nombre ya se ha guardado ");
+        Date horaActual=new Date();
+
+        String hora=(horaActual.getYear()+1900)+" "+horaActual.getMonth()+1+" "+horaActual.getDate()+" "
+                +horaActual.getHours()+" "+horaActual.getMinutes()
+                +""+horaActual.getSeconds();
+        tDato.setText("Bienvenido "+val_Nombre+" Su nombre ya se ha guardado "+hora);
 
 
     }
